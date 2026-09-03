@@ -1,641 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amoako Benedict Acheampong — ML Engineer &amp; Researcher</title>
-<meta name="description" content="Portfolio of Amoako Benedict Acheampong — machine learning researcher and software engineer in Accra, Ghana. Fine-tuning vision-language models, NLP for low-resource languages, and backend engineering.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
-<style>
-:root {
-  --navy: #0a192f;
-  --light-navy: #112240;
-  --lightest-navy: #233554;
-  --slate: #8892b0;
-  --light-slate: #a8b2d1;
-  --lightest-slate: #ccd6f6;
-  --white: #e6f1ff;
-  --accent: #64ffda;
-  --accent-dim: rgba(100, 255, 218, 0.1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amoako Benedict Acheampong — ML Engineer &amp; Researcher</title>
+  <meta name="description"
+    content="Portfolio of Amoako Benedict Acheampong — machine learning researcher and software engineer in Accra, Ghana. Fine-tuning vision-language models, NLP for low-resource languages, and backend engineering.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
+  <style>
+    :root {
+      --navy: #0a192f;
+      --light-navy: #112240;
+      --lightest-navy: #233554;
+      --slate: #8892b0;
+      --light-slate: #a8b2d1;
+      --lightest-slate: #ccd6f6;
+      --white: #e6f1ff;
+      --accent: #64ffda;
+      --accent-dim: rgba(100, 255, 218, 0.1);
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background: var(--navy);
-  color: var(--slate);
-  font-family: 'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-::selection { background: rgba(100, 255, 218, 0.25); color: var(--white); }
+    body {
+      background: var(--navy);
+      color: var(--slate);
+      font-family: 'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-a { color: var(--accent); text-decoration: none; transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); }
-a:hover, a:focus { color: var(--white); outline: none; }
+    ::selection {
+      background: rgba(100, 255, 218, 0.25);
+      color: var(--white);
+    }
 
-h1, h2, h3, h4 { color: var(--lightest-slate); font-weight: 600; line-height: 1.2; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
 
-section { margin: 0 auto; padding: 90px 0; max-width: 1000px; }
+    a:hover,
+    a:focus {
+      color: var(--white);
+      outline: none;
+    }
 
-/* ---------- Sidebar nav ---------- */
-nav {
-  position: fixed;
-  top: 0; bottom: 0; right: 0;
-  width: min(20vw, 250px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 10;
-  counter-reset: nav-counter;
-}
-nav ol { list-style: none; display: flex; flex-direction: column; gap: 22px; }
-nav a {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; letter-spacing: 0.05em;
-  color: var(--slate);
-  padding: 8px 40px 8px 20px;
-  border-right: 2px solid var(--lightest-navy);
-}
-nav a::before {
-  counter-increment: nav-counter;
-  content: "0" counter(nav-counter) ".";
-  color: var(--accent);
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-}
-nav a:hover, nav a.active {
-  color: var(--accent);
-  border-right-color: var(--accent);
-}
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--lightest-slate);
+      font-weight: 600;
+      line-height: 1.2;
+    }
 
-/* ---------- Hero ---------- */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 1600px;
-  padding: 0 12vw 0 8vw;
-}
-#hero .greeting { color: var(--accent); font-size: 16px; margin-bottom: 20px; }
-#hero h1 { font-size: clamp(40px, 8vw, 76px); margin-bottom: 8px; }
-#hero h2 {
-  font-size: clamp(30px, 6vw, 58px);
-  color: var(--slate);
-  margin-bottom: 28px;
-}
-#hero p { max-width: 540px; margin-bottom: 50px; }
-#hero .email-btn {
-  display: inline-block;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  padding: 18px 32px;
-  font-size: 15px;
-  font-weight: 600;
-}
-#hero .email-btn:hover { background: var(--accent-dim); color: var(--accent); }
+    section {
+      margin: 0 auto;
+      padding: 90px 0;
+      max-width: 1000px;
+    }
 
-.scroll-hint {
-  position: absolute; bottom: 32px; left: 50%;
-  transform: translateX(-50%);
-  color: var(--accent); font-size: 22px;
-  animation: bob 2s ease-in-out infinite;
-}
-@keyframes bob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 10px); } }
+    /* ---------- Sidebar nav ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: min(20vw, 250px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 10;
+      counter-reset: nav-counter;
+    }
 
-/* ---------- Section headers ---------- */
-.sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
-.sec-head .num {
-  color: var(--accent);
-  font-size: 21px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 500;
-}
-.sec-head h2 { font-size: 27px; white-space: nowrap; }
-.sec-head::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--lightest-navy);
-  max-width: 300px;
-}
+    nav ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
 
-/* ---------- About ---------- */
-#about .grid { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: start; }
-#about ul.tech-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 220px));
-  gap: 4px 24px;
-  list-style: none;
-  overflow: hidden;
-  margin-top: 20px;
-}
-#about ul.tech-list li { position: relative; padding-left: 22px; font-size: 15px; }
-#about ul.tech-list li::before {
-  content: "▹";
-  position: absolute; left: 0; top: 2px;
-  color: var(--accent); font-size: 14px;
-}
-#about .photo-wrap {
-  position: relative;
-  max-width: 300px;
-  margin: 0 auto;
-}
-#about .photo-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 20px -20px -20px 20px;
-  border: 2px solid var(--accent);
-  border-radius: 6px;
-  z-index: -1;
-  transition: transform 0.3s ease;
-}
-#about .photo-wrap:hover::before { transform: translate(6px, -6px); }
-#about .avatar {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 6px;
-  display: block;
-  background: var(--light-navy);
-  position: relative;
-  overflow: hidden;
-}
-#about .avatar .fallback {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent);
-  font-size: 90px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--light-navy), var(--lightest-navy));
-}
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      padding: 8px 40px 8px 20px;
+      border-right: 2px solid var(--lightest-navy);
+    }
 
-/* ---------- Experience ---------- */
-.exp {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
-  padding-bottom: 44px;
-  position: relative;
-}
-.exp::before {
-  content: "";
-  position: absolute;
-  left: 7px; top: 8px; bottom: 0;
-  width: 2px;
-  background: var(--lightest-navy);
-}
-.exp:last-child::before { display: none; }
-.exp .when {
-  text-align: right;
-  color: var(--slate);
-  font-size: 15px;
-  padding-top: 4px;
-}
-.exp .point {
-  position: absolute;
-  left: 0; top: 8px;
-  width: 13px; height: 13px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: var(--navy);
-  z-index: 1;
-}
-.exp .role-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 4px; }
-.exp h3 { font-size: 19px; }
-.exp h3 a { color: var(--accent); }
-.exp .org { color: var(--slate); font-size: 15px; font-style: italic; }
-.exp ul { list-style: none; margin-top: 12px; }
-.exp ul li { position: relative; padding-left: 26px; margin-bottom: 10px; font-size: 16px; }
-.exp ul li::before {
-  content: "▹";
-  position: absolute; left: 4px; top: 1px;
-  color: var(--accent);
-}
-.exp .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.exp .tags span {
-  font-size: 12.5px;
-  color: var(--accent);
-  border: 1px solid rgba(100,255,218,0.28);
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-family: 'Consolas', 'Courier New', monospace;
-}
+    nav a::before {
+      counter-increment: nav-counter;
+      content: "0" counter(nav-counter) ".";
+      color: var(--accent);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
 
-/* ---------- Projects ---------- */
-#projects .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-.card {
-  background: var(--light-navy);
-  border-radius: 6px;
-  padding: 26px 24px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 40px -20px rgba(2, 12, 27, 0.85);
-}
-.card .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-.card .icon { color: var(--accent); font-size: 34px; line-height: 1; }
-.card .links { display: flex; gap: 14px; font-size: 21px; }
-.card h3 { font-size: 20px; margin-bottom: 12px; }
-.card p { font-size: 15px; flex-grow: 1; }
-.card .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-.card .tags span {
-  font-size: 12px;
-  color: var(--slate);
-  font-family: 'Consolas', 'Courier New', monospace;
-}
-.card.featured { grid-column: 1 / -1; }
-.card.featured .body { display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: start; }
-.card.featured .side {
-  background: var(--navy);
-  border: 1px solid var(--lightest-navy);
-  border-radius: 6px;
-  padding: 14px;
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 13px;
-  color: var(--accent);
-}
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      border-right-color: var(--accent);
+    }
 
-/* ---------- Publications ---------- */
-#papers .paper {
-  background: var(--light-navy);
-  border-radius: 6px;
-  padding: 24px 28px;
-  margin-bottom: 20px;
-  border-left: 3px solid var(--accent);
-}
-#papers .paper h3 { font-size: 18px; margin-bottom: 6px; }
-#papers .paper .meta { font-size: 14px; color: var(--slate); font-style: italic; margin-bottom: 10px; }
-#papers .paper p { font-size: 15px; }
+    /* ---------- Hero ---------- */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1600px;
+      padding: 0 12vw 0 8vw;
+    }
 
-/* ---------- Contact ---------- */
-#contact { text-align: center; max-width: 640px; }
-#contact h2 { font-size: 32px; margin-bottom: 16px; }
-#contact p { margin-bottom: 40px; }
+    #hero .greeting {
+      color: var(--accent);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
 
-footer {
-  text-align: center;
-  padding: 30px 20px 40px;
-  font-size: 13px;
-  color: var(--slate);
-}
+    #hero h1 {
+      font-size: clamp(40px, 8vw, 76px);
+      margin-bottom: 8px;
+    }
 
-/* ---------- Mobile ---------- */
-@media (max-width: 880px) {
-  nav {
-    position: fixed;
-    top: auto; bottom: 0; right: 0; left: 0;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    background: rgba(10, 25, 47, 0.94);
-    backdrop-filter: blur(8px);
-    padding: 10px 0 12px;
-  }
-  nav ol { flex-direction: row; gap: 4px; }
-  nav a { padding: 6px 10px; border-right: none; font-size: 11px; gap: 4px; }
-  nav a::before { font-size: 9px; }
-  body { padding-bottom: 60px; font-size: 16px; }
-  #hero { padding: 0 7vw; min-height: 92vh; }
-  #about .grid { grid-template-columns: 1fr; }
-  .exp { grid-template-columns: 1fr; gap: 6px; }
-  .exp .when { text-align: left; }
-  .exp::before { display: none; }
-  .card.featured .body { grid-template-columns: 1fr; }
-  section { padding: 64px 7vw; }
-}
+    #hero h2 {
+      font-size: clamp(30px, 6vw, 58px);
+      color: var(--slate);
+      margin-bottom: 28px;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .scroll-hint { animation: none; }
-}
-</style>
+    #hero p {
+      max-width: 540px;
+      margin-bottom: 50px;
+    }
+
+    #hero .email-btn {
+      display: inline-block;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 18px 32px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #hero .email-btn:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    #hero .socials {
+      display: flex;
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    #hero .socials a {
+      color: var(--slate);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    #hero .socials a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--accent);
+      font-size: 22px;
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 10px);
+      }
+    }
+
+    /* ---------- Section headers ---------- */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .sec-head .num {
+      color: var(--accent);
+      font-size: 21px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    .sec-head h2 {
+      font-size: 27px;
+      white-space: nowrap;
+    }
+
+    .sec-head::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--lightest-navy);
+      max-width: 300px;
+    }
+
+    /* ---------- About ---------- */
+    #about .grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    #about ul.tech-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(150px, 220px));
+      gap: 4px 24px;
+      list-style: none;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    #about ul.tech-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 15px;
+    }
+
+    #about ul.tech-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    #about .photo-wrap {
+      position: relative;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    #about .photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 20px -20px -20px 20px;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      z-index: -1;
+      transition: transform 0.3s ease;
+    }
+
+    #about .photo-wrap:hover::before {
+      transform: translate(6px, -6px);
+    }
+
+    #about .avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 6px;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--light-navy), var(--lightest-navy));
+    }
+
+    #about .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      filter: grayscale(35%) contrast(1.05);
+      transition: filter 0.3s ease;
+    }
+
+    #about .avatar:hover img {
+      filter: none;
+    }
+
+    /* ---------- Experience ---------- */
+    .exp {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      padding-bottom: 44px;
+      position: relative;
+    }
+
+    .exp::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: var(--lightest-navy);
+    }
+
+    .exp:last-child::before {
+      display: none;
+    }
+
+    .exp .when {
+      text-align: right;
+      color: var(--slate);
+      font-size: 15px;
+      padding-top: 4px;
+    }
+
+    .exp .point {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--navy);
+      z-index: 1;
+    }
+
+    .exp .role-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .exp h3 {
+      font-size: 19px;
+    }
+
+    .exp h3 a {
+      color: var(--accent);
+    }
+
+    .exp .org {
+      color: var(--slate);
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .exp ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .exp ul li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .exp ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      color: var(--accent);
+    }
+
+    .exp .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .exp .tags span {
+      font-size: 12.5px;
+      color: var(--accent);
+      border: 1px solid rgba(100, 255, 218, 0.28);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    /* ---------- Projects ---------- */
+    #projects .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--light-navy);
+      border-radius: 6px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 40px -20px rgba(2, 12, 27, 0.85);
+    }
+
+    .card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .card .icon {
+      color: var(--accent);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .card .links {
+      display: flex;
+      gap: 14px;
+      font-size: 21px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 15px;
+      flex-grow: 1;
+    }
+
+    .card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .card .tags span {
+      font-size: 12px;
+      color: var(--slate);
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    .card.featured {
+      grid-column: 1 / -1;
+    }
+
+    .card.featured .body {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card.featured .side {
+      background: var(--navy);
+      border: 1px solid var(--lightest-navy);
+      border-radius: 6px;
+      padding: 14px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ---------- Publications ---------- */
+    #papers .paper {
+      background: var(--light-navy);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--accent);
+    }
+
+    #papers .paper h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    #papers .paper .meta {
+      font-size: 14px;
+      color: var(--slate);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    #papers .paper p {
+      font-size: 15px;
+    }
+
+    /* ---------- Contact ---------- */
+    #contact {
+      text-align: center;
+      max-width: 640px;
+    }
+
+    #contact h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    #contact p {
+      margin-bottom: 40px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 880px) {
+      nav {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        background: rgba(10, 25, 47, 0.94);
+        backdrop-filter: blur(8px);
+        padding: 10px 0 12px;
+      }
+
+      nav ol {
+        flex-direction: row;
+        gap: 4px;
+      }
+
+      nav a {
+        padding: 6px 10px;
+        border-right: none;
+        font-size: 11px;
+        gap: 4px;
+      }
+
+      nav a::before {
+        font-size: 9px;
+      }
+
+      body {
+        padding-bottom: 60px;
+        font-size: 16px;
+      }
+
+      #hero {
+        padding: 0 7vw;
+        min-height: 92vh;
+      }
+
+      #about .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .exp .when {
+        text-align: left;
+      }
+
+      .exp::before {
+        display: none;
+      }
+
+      .card.featured .body {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 7vw;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .scroll-hint {
+        animation: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav aria-label="Main">
-  <ol>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#papers">Research</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</nav>
+  <nav aria-label="Main">
+    <ol>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#papers">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
 
-<section id="hero">
-  <p class="greeting">Hi, my name is</p>
-  <h1>Amoako Benedict Acheampong.</h1>
-  <h2>I build intelligent systems that work in the real world.</h2>
-  <p>
-    I'm a machine-learning researcher and software engineer based in Accra, Ghana,
-    finishing a B.Sc. in Computer Science at the University of Ghana. I fine-tune and
-    deploy vision-language models, build NLP tools for low-resource languages, and
-    engineer the backend platforms that hold it all together.
-  </p>
-  <a class="email-btn" href="mailto:amoakoben@gmail.com">Get In Touch</a>
-  <div class="scroll-hint" aria-hidden="true">▾</div>
-</section>
-
-<section id="about">
-  <div class="sec-head"><span class="num">01.</span><h2>About Me</h2></div>
-  <div class="grid">
-    <div>
-      <p>
-        Hello! I'm Benedict — a computer science student who fell in love with the
-        <em>why</em> and <em>how</em> behind the models and frameworks everyone else
-        just uses. That curiosity has taken me from debugging dependency conflicts in
-        LoRA fine-tuning pipelines to publishing research on bias in content
-        moderation systems.
-      </p>
-      <p>
-        My recent work sits at the intersection of machine learning and real impact:
-        fine-tuning <a href="https://developers.googleblog.com/en/medgemma-open-models-built-for-healthcare-ai-applications/">MedGemma</a>
-        to recognise tropical skin diseases on dark skin tones — a group dermatology
-        AI largely underserves — and packaging Twi language data so other researchers
-        can build for a low-resource Ghanaian language.
-      </p>
-      <p>
-        When I'm not training models, I lead backend engineering teams, ship
-        payment-integrated platforms, and run a student community that helps young
-        builders turn ideas into real projects.
-      </p>
-      <p>Here are a few technologies I've been working with:</p>
-      <ul class="tech-list">
-        <li>Python</li>
-        <li>TypeScript / JavaScript</li>
-        <li>PyTorch / LoRA / Unsloth</li>
-        <li>scikit-learn / NLTK</li>
-        <li>Django REST Framework</li>
-        <li>React &amp; React Native</li>
-        <li>PostgreSQL / MongoDB</li>
-        <li>Docker &amp; Railway</li>
-      </ul>
+  <section id="hero">
+    <p class="greeting">Hi, my name is</p>
+    <h1>Amoako Benedict Acheampong.</h1>
+    <h2>I build intelligent systems that work in the real world.</h2>
+    <p>
+      I'm a machine-learning researcher and software engineer based in Accra, Ghana,
+      finishing a B.Sc. in Computer Science at the University of Ghana. I fine-tune and
+      deploy vision-language models, build NLP tools for low-resource languages, and
+      engineer the backend platforms that hold it all together.
+    </p>
+    <a class="email-btn" href="mailto:amoakoben40@gmail.com">Get In Touch</a>
+    <div class="socials">
+      <a href="https://github.com/primeyloa" aria-label="GitHub">GH</a>
+      <a href="https://linkedin.com/in/amoakoben" aria-label="LinkedIn">in</a>
+      <a href="https://x.com/yloa_nyame" aria-label="X (Twitter)">𝕏</a>
+      <a href="https://yloa.substack.com" aria-label="Substack">✉</a>
     </div>
-    <div class="photo-wrap">
-      <div class="avatar"><div class="fallback">AB</div></div>
+    <div class="scroll-hint" aria-hidden="true">▾</div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head"><span class="num">01.</span>
+      <h2>About Me</h2>
     </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="sec-head"><span class="num">02.</span><h2>Where I've Worked</h2></div>
-
-  <div class="exp">
-    <span class="point" aria-hidden="true"></span>
-    <div class="when">Apr 2026 — Sep 2026</div>
-    <div>
-      <div class="role-line">
-        <h3>Backend Engineer Intern</h3>
-        <span class="org">· Scholafrik (Remote)</span>
+    <div class="grid">
+      <div>
+        <p>
+          Hello! I'm Benedict — a computer science student who fell in love with the
+          <em>why</em> and <em>how</em> behind the models and frameworks everyone else
+          just uses. That curiosity has taken me from debugging dependency conflicts in
+          LoRA fine-tuning pipelines to publishing research on bias in content
+          moderation systems.
+        </p>
+        <p>
+          My recent work sits at the intersection of machine learning and real impact:
+          fine-tuning <a
+            href="https://developers.googleblog.com/en/medgemma-open-models-built-for-healthcare-ai-applications/">MedGemma</a>
+          to recognise tropical skin diseases on dark skin tones — a group dermatology
+          AI largely underserves — and packaging Twi language data so other researchers
+          can build for a low-resource Ghanaian language.
+        </p>
+        <p>
+          When I'm not training models, I lead backend engineering teams, ship
+          payment-integrated platforms, run a student community that helps young
+          builders turn ideas into real projects — and
+          <a href="https://yloa.substack.com">write</a> about what I'm thinking
+          through along the way.
+        </p>
+        <p>Here are a few technologies I've been working with:</p>
+        <ul class="tech-list">
+          <li>Python</li>
+          <li>TypeScript / JavaScript</li>
+          <li>PyTorch / LoRA / Unsloth</li>
+          <li>scikit-learn / NLTK</li>
+          <li>Django REST Framework</li>
+          <li>React &amp; React Native</li>
+          <li>PostgreSQL / MongoDB</li>
+          <li>Docker &amp; Railway</li>
+        </ul>
       </div>
-      <ul>
-        <li>Shipped backend features in a TypeScript codebase with strict type safety, writing and maintaining tests and managing database queries across releases.</li>
-        <li>Collaborated in a remote agile team to integrate new product features end-to-end, from design review to production.</li>
-      </ul>
-      <div class="tags"><span>TypeScript</span><span>Backend</span><span>Testing</span><span>Agile</span></div>
-    </div>
-  </div>
-
-  <div class="exp">
-    <span class="point" aria-hidden="true"></span>
-    <div class="when">Sep 2025 — Dec 2025</div>
-    <div>
-      <div class="role-line">
-        <h3>Machine Learning Research Intern</h3>
-        <span class="org">· Data Intelligence &amp; Swarm Analytics (DISAL)</span>
-      </div>
-      <ul>
-        <li>Fine-tuned Google MedGemma 4B with Low-Rank Adaptation (LoRA via Unsloth) to classify tropical skin diseases, optimised for dark skin tones to reduce diagnostic bias.</li>
-        <li>Built the full data pipeline — bulk medical image processing, quality enhancement and filtering — under tight memory constraints.</li>
-        <li>Ran systematic evaluation of fine-tuned checkpoints and integrated the deployed model with a mobile application.</li>
-      </ul>
-      <div class="tags"><span>LoRA</span><span>MedGemma</span><span>Computer Vision</span><span>Python</span><span>Unsloth</span></div>
-    </div>
-  </div>
-
-  <div class="exp">
-    <span class="point" aria-hidden="true"></span>
-    <div class="when">2025 — 2026</div>
-    <div>
-      <div class="role-line">
-        <h3>NLP Scientist</h3>
-        <span class="org">· Tourism Review Sentiment &amp; Service-Quality Analytics</span>
-      </div>
-      <ul>
-        <li>Designed an end-to-end NLP pipeline over large-scale public review datasets: tokenisation, Bag-of-Words, preprocessing and rigorous error analysis.</li>
-        <li>Aligned model predictions with service-quality metrics, turning raw reviews into actionable insights.</li>
-      </ul>
-      <div class="tags"><span>NLTK</span><span>scikit-learn</span><span>Pandas</span><span>Sentiment Analysis</span></div>
-    </div>
-  </div>
-
-  <div class="exp">
-    <span class="point" aria-hidden="true"></span>
-    <div class="when">Nov 2025</div>
-    <div>
-      <div class="role-line">
-        <h3>IT Business Analyst (Pro-bono)</h3>
-        <span class="org">· Agyaben Skin Clinic</span>
-      </div>
-      <ul>
-        <li>Analysed patient intake-to-consultation workflows with a small team; implemented a hybrid scheduling system that reduced congestion and queueing.</li>
-      </ul>
-      <div class="tags"><span>Process Analysis</span><span>Workflow Design</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="sec-head"><span class="num">03.</span><h2>Things I've Built</h2></div>
-  <div class="grid">
-
-    <div class="card featured">
-      <div class="top">
-        <span class="icon" aria-hidden="true">❤</span>
-        <div class="links"><a href="https://github.com/primeyloa/CauseHive-front" aria-label="GitHub repository">⌥</a></div>
-      </div>
-      <div class="body">
-        <div>
-          <h3>CauseHive</h3>
-          <p>
-            A full donation-management platform for causes across Africa. I led the
-            entire backend in an agile team: REST APIs for donation tracking and
-            cause management, JWT authentication, rate limiting, Celery background
-            jobs, and Paystack payment-gateway integration supporting donations in
-            multiple African countries. We later consolidated four microservices
-            into a single deployable Django monolith with per-domain databases and
-            a custom database router.
-          </p>
+      <div class="photo-wrap">
+        <div class="avatar">
+          <img src="images\photo_2026-09-03_10-31-32.jpg" alt="Portrait of Amoako Benedict Acheampong" loading="lazy">
         </div>
-        <div class="side">
-          Django REST<br>
-          React · Vite<br>
-          PostgreSQL<br>
-          Celery · Redis<br>
-          Paystack<br>
-          Docker · Railway
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="num">02.</span>
+      <h2>Where I've Worked</h2>
+    </div>
+
+    <div class="exp">
+      <span class="point" aria-hidden="true"></span>
+      <div class="when">Apr 2026 — Sep 2026</div>
+      <div>
+        <div class="role-line">
+          <h3>Backend Engineer Intern</h3>
+          <span class="org">· Scholafrik (Remote)</span>
+        </div>
+        <ul>
+          <li>Shipped backend features in a TypeScript codebase with strict type safety, writing and maintaining tests
+            and managing database queries across releases.</li>
+          <li>Collaborated in a remote agile team to integrate new product features end-to-end, from design review to
+            production.</li>
+        </ul>
+        <div class="tags"><span>TypeScript</span><span>Backend</span><span>Testing</span><span>Agile</span></div>
+      </div>
+    </div>
+
+    <div class="exp">
+      <span class="point" aria-hidden="true"></span>
+      <div class="when">Sep 2025 — Dec 2025</div>
+      <div>
+        <div class="role-line">
+          <h3>Machine Learning Research Intern</h3>
+          <span class="org">· Data Intelligence &amp; Swarm Analytics (DISAL)</span>
+        </div>
+        <ul>
+          <li>Fine-tuned Google MedGemma 4B with Low-Rank Adaptation (LoRA via Unsloth) to classify tropical skin
+            diseases, optimised for dark skin tones to reduce diagnostic bias.</li>
+          <li>Built the full data pipeline — bulk medical image processing, quality enhancement and filtering — under
+            tight memory constraints.</li>
+          <li>Ran systematic evaluation of fine-tuned checkpoints and integrated the deployed model with a mobile
+            application.</li>
+        </ul>
+        <div class="tags"><span>LoRA</span><span>MedGemma</span><span>Computer
+            Vision</span><span>Python</span><span>Unsloth</span></div>
+      </div>
+    </div>
+
+    <div class="exp">
+      <span class="point" aria-hidden="true"></span>
+      <div class="when">2025 — 2026</div>
+      <div>
+        <div class="role-line">
+          <h3>NLP Scientist</h3>
+          <span class="org">· Tourism Review Sentiment &amp; Service-Quality Analytics</span>
+        </div>
+        <ul>
+          <li>Designed an end-to-end NLP pipeline over large-scale public review datasets: tokenisation, Bag-of-Words,
+            preprocessing and rigorous error analysis.</li>
+          <li>Aligned model predictions with service-quality metrics, turning raw reviews into actionable insights.</li>
+        </ul>
+        <div class="tags"><span>NLTK</span><span>scikit-learn</span><span>Pandas</span><span>Sentiment Analysis</span>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="top">
-        <span class="icon" aria-hidden="true">📈</span>
-        <div class="links"><a href="https://github.com/primeyloa/twicorpus" aria-label="GitHub repository">⌥</a></div>
+    <div class="exp">
+      <span class="point" aria-hidden="true"></span>
+      <div class="when">Nov 2025</div>
+      <div>
+        <div class="role-line">
+          <h3>IT Business Analyst (Pro-bono)</h3>
+          <span class="org">· Agyaben Skin Clinic</span>
+        </div>
+        <ul>
+          <li>Analysed patient intake-to-consultation workflows with a small team; implemented a hybrid scheduling
+            system that reduced congestion and queueing.</li>
+        </ul>
+        <div class="tags"><span>Process Analysis</span><span>Workflow Design</span></div>
       </div>
-      <h3>twicorpus</h3>
-      <p>
-        An installable Python package (pip install twicorpus) providing NLTK-style
-        word lists and corpora for Twi — a low-resource Ghanaian language. Built to
-        lower the barrier for NLP research in Akan, with open-source attribution to
-        the GhanaNLP community dataset.
-      </p>
-      <div class="tags"><span>Python</span><span>NLP</span><span>NLTK</span><span>Low-resource languages</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="num">03.</span>
+      <h2>Things I've Built</h2>
+    </div>
+    <div class="grid">
+
+      <div class="card featured">
+        <div class="top">
+          <span class="icon" aria-hidden="true">❤</span>
+          <div class="links"><a href="https://github.com/primeyloa/CauseHive-front" aria-label="GitHub repository">⌥</a>
+          </div>
+        </div>
+        <div class="body">
+          <div>
+            <h3>CauseHive</h3>
+            <p>
+              A full donation-management platform for causes across Africa. I led the
+              entire backend in an agile team: REST APIs for donation tracking and
+              cause management, JWT authentication, rate limiting, Celery background
+              jobs, and Paystack payment-gateway integration supporting donations in
+              multiple African countries. We later consolidated four microservices
+              into a single deployable Django monolith with per-domain databases and
+              a custom database router.
+            </p>
+          </div>
+          <div class="side">
+            Django REST<br>
+            React · Vite<br>
+            PostgreSQL<br>
+            Celery · Redis<br>
+            Paystack<br>
+            Docker · Railway
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="icon" aria-hidden="true">📈</span>
+          <div class="links"><a href="https://github.com/primeyloa/twicorpus" aria-label="GitHub repository">⌥</a></div>
+        </div>
+        <h3>twicorpus</h3>
+        <p>
+          An installable Python package (pip install twicorpus) providing NLTK-style
+          word lists and corpora for Twi — a low-resource Ghanaian language. Built to
+          lower the barrier for NLP research in Akan, with open-source attribution to
+          the GhanaNLP community dataset.
+        </p>
+        <div class="tags"><span>Python</span><span>NLP</span><span>NLTK</span><span>Low-resource languages</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="icon" aria-hidden="true">🧠</span>
+          <div class="links"><a href="https://github.com/primeyloa/Service-Hub" aria-label="GitHub repository">⌥</a>
+          </div>
+        </div>
+        <h3>Service Hub</h3>
+        <p>
+          A smart service-request dispatcher for the University of Ghana campus, built
+          jointly with classmates. Custom data structures (heaps, red-black trees,
+          graphs), classic algorithms (Dijkstra, MST, knapsack), a simulation GUI and
+          an empirical benchmarker — all from scratch in Java.
+        </p>
+        <div class="tags"><span>Java</span><span>Data Structures</span><span>Algorithms</span><span>SQLite</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="icon" aria-hidden="true">🎙</span>
+          <div class="links"><a href="https://github.com/primeyloa/asr" aria-label="GitHub repository">⌥</a></div>
+        </div>
+        <h3>Twi ASR</h3>
+        <p>
+          A prototype mobile app for Twi automatic speech recognition: realtime
+          streaming transcription with English translation, dialect switching
+          (Asante, Akuapem, Fante), transcript history with search and bookmarks, and
+          export. The architecture is wired so a real inference backend can drop in.
+        </p>
+        <div class="tags"><span>React Native</span><span>Expo</span><span>TypeScript</span><span>SQLite</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="icon" aria-hidden="true">🤖</span>
+          <div class="links"><a href="https://github.com/primeyloa/spindle" aria-label="GitHub repository">⌥</a></div>
+        </div>
+        <h3>spindle</h3>
+        <p>
+          An early-stage agent harness for locally hosted LLMs — designed around
+          cross-model compatibility and an extensible marketplace of agent skills and
+          tools.
+        </p>
+        <div class="tags"><span>TypeScript</span><span>Vite</span><span>Supabase</span><span>LLM Agents</span></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="icon" aria-hidden="true">🎵</span>
+        </div>
+        <h3>Mood-Based Music Expert System</h3>
+        <p>
+          A knowledge-engineering project: Prolog facts, rules and queries powering a
+          mood-based music recommender, with a React Native frontend and Spotify
+          playlist streaming. User feedback tunes the valence values that drive song
+          selection.
+        </p>
+        <div class="tags"><span>Prolog</span><span>Python</span><span>React Native</span><span>Expert Systems</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="papers">
+    <div class="sec-head"><span class="num">04.</span>
+      <h2>Research &amp; Writing</h2>
     </div>
 
-    <div class="card">
-      <div class="top">
-        <span class="icon" aria-hidden="true">🧠</span>
-        <div class="links"><a href="https://github.com/primeyloa/Service-Hub" aria-label="GitHub repository">⌥</a></div>
-      </div>
-      <h3>Service Hub</h3>
+    <div class="paper">
+      <h3><a href="https://doi.org/10.13140/RG.2.2.24694.36165" target="_blank" rel="noopener">
+          Crisis-Driven Bias in Social Media Flagging: Quantifying Topic Sensitivity in
+          Content Moderation Classifiers</a></h3>
+      <div class="meta">Preprint · 2026 · DOI 10.13140/RG.2.2.24694.36165</div>
       <p>
-        A smart service-request dispatcher for the University of Ghana campus, built
-        jointly with classmates. Custom data structures (heaps, red-black trees,
-        graphs), classic algorithms (Dijkstra, MST, knapsack), a simulation GUI and
-        an empirical benchmarker — all from scratch in Java.
+        First-author preprint investigating how content-moderation classifiers become
+        more sensitive to certain topics during crisis periods, and how that heightened
+        sensitivity turns into flagging bias. Contributes methods for measuring topic
+        sensitivity at the intersection of NLP and algorithmic fairness.
       </p>
-      <div class="tags"><span>Java</span><span>Data Structures</span><span>Algorithms</span><span>SQLite</span></div>
     </div>
 
-    <div class="card">
-      <div class="top">
-        <span class="icon" aria-hidden="true">🎙</span>
-        <div class="links"><a href="https://github.com/primeyloa/asr" aria-label="GitHub repository">⌥</a></div>
-      </div>
-      <h3>Twi ASR</h3>
+    <div class="paper">
+      <h3>Fine-Tuning Vision-Language Models for Tropical Skin Disease Classification
+        on Dark Skin Tones</h3>
+      <div class="meta">Data Intelligence &amp; Swarm Analytics (DISAL) · 2025–2026 · Applied research</div>
       <p>
-        A prototype mobile app for Twi automatic speech recognition: realtime
-        streaming transcription with English translation, dialect switching
-        (Asante, Akuapem, Fante), transcript history with search and bookmarks, and
-        export. The architecture is wired so a real inference backend can drop in.
+        Research conducted during my internship at DISAL: fine-tuning MedGemma 4B with
+        LoRA for tropical skin diseases prevalent in Africa, with dataset curation,
+        image-quality enhancement and systematic evaluation — deployed optimised for
+        dark (Fitzpatrick V–VI) skin tones to reduce prediction bias.
       </p>
-      <div class="tags"><span>React Native</span><span>Expo</span><span>TypeScript</span><span>SQLite</span></div>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="top">
-        <span class="icon" aria-hidden="true">🤖</span>
-        <div class="links"><a href="https://github.com/primeyloa/spindle" aria-label="GitHub repository">⌥</a></div>
-      </div>
-      <h3>spindle</h3>
-      <p>
-        An early-stage agent harness for locally hosted LLMs — designed around
-        cross-model compatibility and an extensible marketplace of agent skills and
-        tools.
-      </p>
-      <div class="tags"><span>TypeScript</span><span>Vite</span><span>Supabase</span><span>LLM Agents</span></div>
+  <section id="contact">
+    <div class="sec-head" style="justify-content:center;"><span class="num">05.</span>
+      <h2>What's Next?</h2>
     </div>
-
-    <div class="card">
-      <div class="top">
-        <span class="icon" aria-hidden="true">🎵</span>
-      </div>
-      <h3>Mood-Based Music Expert System</h3>
-      <p>
-        A knowledge-engineering project: Prolog facts, rules and queries powering a
-        mood-based music recommender, with a React Native frontend and Spotify
-        playlist streaming. User feedback tunes the valence values that drive song
-        selection.
-      </p>
-      <div class="tags"><span>Prolog</span><span>Python</span><span>React Native</span><span>Expert Systems</span></div>
-    </div>
-
-  </div>
-</section>
-
-<section id="papers">
-  <div class="sec-head"><span class="num">04.</span><h2>Research &amp; Writing</h2></div>
-
-  <div class="paper">
-    <h3><a href="https://doi.org/10.13140/RG.2.2.24694.36165" target="_blank" rel="noopener">
-      Crisis-Driven Bias in Social Media Flagging: Quantifying Topic Sensitivity in
-      Content Moderation Classifiers</a></h3>
-    <div class="meta">Preprint · 2026 · DOI 10.13140/RG.2.2.24694.36165</div>
+    <h2 style="font-size: 44px;">Get In Touch</h2>
     <p>
-      First-author preprint investigating how content-moderation classifiers become
-      more sensitive to certain topics during crisis periods, and how that heightened
-      sensitivity turns into flagging bias. Contributes methods for measuring topic
-      sensitivity at the intersection of NLP and algorithmic fairness.
+      I'm currently open to machine-learning engineering and research opportunities,
+      internships, and interesting collaborations — especially at the intersection of
+      AI and real-world impact. My inbox is always open, whether you have a role, a
+      project, or just want to talk shop.
     </p>
-  </div>
+    <a class="email-btn" href="mailto:amoakoben40@gmail.com">Say Hello</a>
+  </section>
 
-  <div class="paper">
-    <h3>Fine-Tuning Vision-Language Models for Tropical Skin Disease Classification
-      on Dark Skin Tones</h3>
-    <div class="meta">Data Intelligence &amp; Swarm Analytics (DISAL) · 2025–2026 · Applied research</div>
-    <p>
-      Research conducted during my internship at DISAL: fine-tuning MedGemma 4B with
-      LoRA for tropical skin diseases prevalent in Africa, with dataset curation,
-      image-quality enhancement and systematic evaluation — deployed optimised for
-      dark (Fitzpatrick V–VI) skin tones to reduce prediction bias.
+  <footer>
+    <p>Designed &amp; built by Amoako Benedict Acheampong ·
+      <a href="https://github.com/primeyloa">GitHub</a> ·
+      <a href="https://linkedin.com/in/amoakoben">LinkedIn</a> ·
+      <a href="https://x.com/yloa_nyame">X</a> ·
+      <a href="https://yloa.substack.com">Substack</a>
     </p>
-  </div>
-</section>
+  </footer>
 
-<section id="contact">
-  <div class="sec-head" style="justify-content:center;"><span class="num">05.</span><h2>What's Next?</h2></div>
-  <h2 style="font-size: 44px;">Get In Touch</h2>
-  <p>
-    I'm currently open to machine-learning engineering and research opportunities,
-    internships, and interesting collaborations — especially at the intersection of
-    AI and real-world impact. My inbox is always open, whether you have a role, a
-    project, or just want to talk shop.
-  </p>
-  <a class="email-btn" href="mailto:amoakoben@gmail.com">Say Hello</a>
-</section>
+  <script>
+    // Highlight the nav link of the section currently in view
+    (function () {
+      var links = document.querySelectorAll('nav a');
+      var map = {};
+      links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
+      var sections = Array.prototype.slice.call(
+        document.querySelectorAll('section[id]'));
 
-<footer>
-  <p>Designed &amp; built by Amoako Benedict Acheampong ·
-     <a href="https://github.com/primeyloa">GitHub</a> ·
-     <a href="https://linkedin.com/in/amoakoben">LinkedIn</a></p>
-</footer>
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (l) { l.classList.remove('active'); });
+            var link = map[e.target.id];
+            if (link) link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
 
-<script>
-// Highlight the nav link of the section currently in view
-(function () {
-  var links = document.querySelectorAll('nav a');
-  var map = {};
-  links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
-  var sections = Array.prototype.slice.call(
-    document.querySelectorAll('section[id]'));
-
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        links.forEach(function (l) { l.classList.remove('active'); });
-        var link = map[e.target.id];
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-
-  sections.forEach(function (s) { observer.observe(s); });
-})();
-</script>
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 </body>
+
 </html>

@@ -41,6 +41,8 @@ to change the PDFs.
 
 ## Notes
 
-- Replace the `.avatar` fallback block in `index.html` with a real photo when
-  available (an `<img>` inside `.avatar`).
-- Phone/email used across documents: amoakoben@gmail.com · +233 50 572 2027.
+- Profile photo in the About section: `site/images/photo_2026-09-03_10-32-34.jpg`
+  (square-cropped via CSS; subtly desaturated, colour on hover). The other images
+  in `site/images/` are unused — safe to delete before deploying.
+- Phone/email used across documents: amoakoben40@gmail.com · +233 50 572 2027.
+- Socials: GitHub primeyloa · LinkedIn amoakoben · X @yloa_nyame · Substack yloa.substack.com.
