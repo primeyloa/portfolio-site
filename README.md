@@ -2,6 +2,9 @@
 
 Portfolio site for **Amoako Benedict Acheampong**.
 
+**Live:** https://benedictamoako.vercel.app/ (deployed on Vercel — redeploy after
+pushing changes to `site/`).
+
 ## Deploying the site
 
 The site is a single static file. Easiest options:
